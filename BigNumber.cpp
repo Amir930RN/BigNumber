@@ -400,8 +400,18 @@ BigNumber BigNumber:: operator>>( unsigned shift ){
 
 BigNumber operator-(const BigNumber &num1, const BigNumber &num2) {
 
-    BigNumber result= num1 + (-num2);
-
+    BigNumber result;
+    if(num1.sign == num2.sign){
+        result = BigNumber:: unsignedSubtract(num1, num2);
+        result.sign = num1.sign;
+    }
+    else{
+        result = BigNumber::unsignedAdd(num1, num2);
+        result.sign = BigNumber::unsignedMax(num1, num2).sign;
+    }
+    if(result.numOfDigits == 1 && result[0] == 0 ){
+        result.sign = true;
+    }
     return result;
 
 }
