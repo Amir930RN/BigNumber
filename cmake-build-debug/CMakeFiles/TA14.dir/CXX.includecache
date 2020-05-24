@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+E:/Amir/University/Term 2/AP/BigNumber/BigNumber.cpp
+BigNumber.h
+E:/Amir/University/Term 2/AP/BigNumber/BigNumber.h
+stdexcept
+-
+
 E:/Amir/University/Term 2/AP/BigNumber/BigNumber.h
 cstdint
 -
