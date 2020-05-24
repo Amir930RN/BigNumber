@@ -415,3 +415,19 @@ BigNumber operator-(const BigNumber &num1, const BigNumber &num2) {
     return result;
 
 }
+
+BigNumber &BigNumber::operator--() {
+
+    *this = (*this) -1 ;
+
+    return *this;
+
+}
+
+BigNumber BigNumber::operator--( int ) {
+
+    BigNumber temp{*this};
+    *this = (*this) -1 ;
+    return temp;
+
+}
