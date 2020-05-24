@@ -397,3 +397,11 @@ BigNumber BigNumber:: operator>>( unsigned shift ){
     }
     return temp;
 }
+
+BigNumber operator-(const BigNumber &num1, const BigNumber &num2) {
+
+    BigNumber result= num1 + (-num2);
+
+    return result;
+
+}
