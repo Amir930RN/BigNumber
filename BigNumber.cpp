@@ -98,19 +98,6 @@ std::istream &operator>>(std::istream &input, BigNumber &myBig) {
     return input;
 }
 
-BigNumber & BigNumber:: operator=(const BigNumber & rightNum){
-    // x = y;
-    if ( &rightNum != this ){
-        sign = rightNum.sign;
-        numOfDigits = rightNum.numOfDigits;
-        delete [] numArray;
-        numArray = new int8_t[numOfDigits];
-        for(size_t i{0}; i < numOfDigits; ++i){
-            numArray[i] = rightNum.numArray[i];
-        }
-    }
-    return *this;
-}
 
 BigNumber BigNumber:: operator-() const{
     BigNumber temp;
@@ -162,16 +149,6 @@ BigNumber::BigNumber ( BigNumber && myBig ) noexcept
     myBig.numArray = nullptr;
 }
 
-BigNumber & BigNumber:: operator=( BigNumber && rightNum) noexcept {
-    if( &rightNum != this ){
-        sign = rightNum.sign;
-        numOfDigits = rightNum.numOfDigits;
-        delete [] numArray;
-        numArray = rightNum.numArray;
-        rightNum.numArray = nullptr;
-    }
-    return *this;
-}
 
 BigNumber BigNumber::unsignedMax(const BigNumber &num1, const BigNumber &num2) {
     if( num1.numOfDigits > num2.numOfDigits){
@@ -447,3 +424,33 @@ BigNumber BigNumber::operator++( int ) {
     return temp;
 
 }
+
+BigNumber & BigNumber:: operator=(const BigNumber & rightNum){
+
+    if ( &rightNum != this ){
+        sign = rightNum.sign;
+        numOfDigits = rightNum.numOfDigits;
+        delete [] numArray;
+        numArray = new int8_t[numOfDigits];
+        for(size_t i{0}; i < numOfDigits; ++i){
+            numArray[i] = rightNum.numArray[i];
+        }
+    }
+    return *this;
+
+}
+
+
+BigNumber & BigNumber:: operator=( BigNumber && rightNum) noexcept {
+
+    if( &rightNum != this ){
+        sign = rightNum.sign;
+        numOfDigits = rightNum.numOfDigits;
+        delete [] numArray;
+        numArray = rightNum.numArray;
+        rightNum.numArray = nullptr;
+    }
+    return *this;
+
+}
+

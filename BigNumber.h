@@ -43,8 +43,6 @@ public:
     void setValues( const std::string & str );
     bool getSign() const;
     unsigned int getNumOfDigits() const;
-    BigNumber & operator=(const BigNumber & rightNum);
-    BigNumber & operator=(BigNumber && rightNum) noexcept ;   // move assignment overloading
     BigNumber operator-() const;
     int operator[](size_t index) const;
     bool operator==( const BigNumber & myBig) const;
@@ -55,10 +53,15 @@ public:
     bool operator<( const BigNumber & myBig) const;
     BigNumber absoluteValue() const;
     BigNumber operator>>( unsigned shift );
+
+
+    //new
     BigNumber& operator--();
     BigNumber operator--( int );
     BigNumber& operator++();
     BigNumber operator++( int );
+    BigNumber & operator=(const BigNumber & rightNum);
+    BigNumber & operator=(BigNumber && rightNum) noexcept ;   // move assignment overloading
 
 };
 
