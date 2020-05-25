@@ -8,6 +8,7 @@ class MyBigNumber : public BigNumber {
 
     friend MyBigNumber operator*( const MyBigNumber & num1, const MyBigNumber & num2);
 
+
 private:
 
     MyBigNumber(){};

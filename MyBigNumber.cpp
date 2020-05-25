@@ -177,3 +177,5 @@ MyBigNumber MyBigNumber::power(const MyBigNumber &big, unsigned power) {
 }
 
 
+
+

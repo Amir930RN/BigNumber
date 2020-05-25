@@ -461,3 +461,26 @@ int8_t &BigNumber::getA(size_t index) {
     return numArray[index];
 }
 
+BigNumber BigNumber::operator()(unsigned f, unsigned s) {
+
+    if (f>=numOfDigits || s>numOfDigits || s>(f+1) ) throw invalid_argument("invalid inputs");
+
+
+    BigNumber result;
+
+    result.sign = sign;
+
+    result.numOfDigits = s;
+
+    result.numArray =  new int8_t[result.numOfDigits];
+
+    for (int i = 0; i < s ; ++i) {
+
+        result.numArray[i]= numArray[f-s+i+1];
+
+    }
+
+    return result;
+
+}
+

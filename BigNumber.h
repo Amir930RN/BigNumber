@@ -64,6 +64,8 @@ public:
     BigNumber operator++( int );
     BigNumber & operator=(const BigNumber & rightNum);
     BigNumber & operator=(BigNumber && rightNum) noexcept ;   // move assignment overloading
+    BigNumber operator() ( unsigned f, unsigned s);
+
 
     int8_t& getA(size_t index);
 
