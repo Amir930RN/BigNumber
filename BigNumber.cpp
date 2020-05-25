@@ -484,3 +484,25 @@ BigNumber BigNumber::operator()(unsigned f, unsigned s) {
 
 }
 
+BigNumber BigNumber:: operator<<( unsigned shift ){
+
+    BigNumber temp;
+
+    if( shift==0 ) {
+        return *this;
+    }
+    else{
+        temp.sign = sign;
+        temp.numOfDigits = numOfDigits + shift;
+        temp.numArray = new int8_t[temp.numOfDigits];
+
+        for (int i = 0; i < shift ; ++i) {
+            temp.numArray[i] = 0;
+        }
+
+        for (int i = (int) shift; i < temp.numOfDigits ; ++i) {
+            temp.numArray[i] = numArray[i-shift];
+        }
+    }
+    return temp;
+}

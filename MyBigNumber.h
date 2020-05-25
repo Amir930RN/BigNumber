@@ -7,7 +7,7 @@ class MyBigNumber : public BigNumber {
 
 
     friend MyBigNumber operator*( const MyBigNumber & num1, const MyBigNumber & num2);
-
+    friend MyBigNumber operator/( const MyBigNumber & num1, const MyBigNumber & num2);
 
 private:
 
@@ -32,13 +32,12 @@ public:
     MyBigNumber &operator= ( const MyBigNumber myBigNumber);
     MyBigNumber ( const MyBigNumber & myBig );   // copy constructor
     MyBigNumber ( MyBigNumber && myBig ) noexcept;  // move constructor
-    MyBigNumber & operator=(MyBigNumber && rightNum) noexcept ;   // move assignment overloading
-
+    //MyBigNumber & operator=(MyBigNumber && rightNum) noexcept ;   // move assignment overloading
+    MyBigNumber operator() ( unsigned f, unsigned s);
 
     MyBigNumber operator<<( unsigned shift );
 
     static MyBigNumber power (const MyBigNumber & big, unsigned power);
-
 
 
 

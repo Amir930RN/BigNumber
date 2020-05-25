@@ -1,36 +1,75 @@
 #include <iostream>
-#include <cstdint>
-
 #include "BigNumber.h"
+#include "MyBigNumber.h"
 
 using namespace std;
 
 int main() {
-    cout << boolalpha;
 
-//    for(unsigned char i{0}; i <= 127; ++i){
-//        std::cout << (int) i << '\t' << i << std::endl;
-//    }
-    //std::cout << x << std::endl;
-//    BigNumber x{-37};
-//    string str = "-0000";
-//    BigNumber y{str};
-//    cout << y << endl;
-//    cout << "Enter a number: ";
-//    cin >> x;
-//    x = -y;
-//    BigNumber z = -y;
-//    cout << (x != y) << endl;
-    BigNumber myBig1 = -17319;
-    BigNumber myBig2 = "0000173";
-    //cout << BigNumber::unsignedLessOrEqual(myBig1, myBig2) << endl;
-    //BigNumber a = BigNumber::unsignedSubtract(myBig1, myBig2);
-    cout << (myBig1>>3) << "\t" << (myBig1>>3).getSign() << endl;
-//    try{
-//        cout << BigNumber::unsignedSubtract(myBig1, myBig2) << endl;
-//    }
-//    catch( out_of_range e){
-//        cout << e.what() << endl;
-//    }
+
+
+
+    BigNumber n1 = 120;
+    BigNumber n2 = 117;
+
+
+/* operator -- and ++ post and pre tests */
+
+
+    //operator-- pre test
+    BigNumber n3 = --n1;
+    cout<<n1<<" "<<n3<<endl;
+
+    //operator-- post test
+    n1--;
+    cout<<n1<<endl;
+
+    //operator++ post test
+    n1++;
+    cout<<n1<<endl;
+
+    //operator++ pre test
+    n3 = ++n1;
+    cout<<n1<<" "<<n3<<endl;
+
+
+    MyBigNumber b1 = 123;
+    MyBigNumber b2 = 122;
+
+    cout<<b1-b2<<endl;
+
+
+    //multy func test
+
+    cout<<b1.multByOneDigit(9)<<endl;
+
+
+    //operator<< test
+
+    MyBigNumber b4 = b1<<5;
+
+    cout<<b4<<endl;
+
+    //operator* test
+
+    MyBigNumber b5 = 123;
+    MyBigNumber b6 = 122;
+    cout<<b5*b6<<endl;
+
+    //function power test
+    cout<<MyBigNumber::power(b1,2)<<endl;
+    cout<<MyBigNumber::power(b1,3)<<endl;
+
+
+    //operator () test
+    BigNumber b7 = 15728839;
+    cout<<b7(6,3)<<endl;
+    cout<<b7(7,4)<<endl;
+    cout<<b7(1,2)<<endl;
+    cout<<b7(1,1)<<endl;
+
+
+
+
     return 0;
 }
