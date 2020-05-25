@@ -5,6 +5,9 @@
 
 class MyBigNumber : public BigNumber {
 
+
+    friend MyBigNumber operator*( const MyBigNumber & num1, const MyBigNumber & num2);
+
 private:
 
     MyBigNumber(){};
@@ -15,6 +18,13 @@ private:
 
 public:
 
+    //must be private
+    MyBigNumber multByOneDigit ( const int input );
+
+    //end of private
+
+
+
     MyBigNumber( const std::string & str );
     MyBigNumber( const char * myCharArray );
     MyBigNumber(const long & intNum );
@@ -24,8 +34,9 @@ public:
     MyBigNumber & operator=(MyBigNumber && rightNum) noexcept ;   // move assignment overloading
 
 
-    MyBigNumber multByOneDigit ( const int input );
+    MyBigNumber operator<<( unsigned shift );
 
+    static MyBigNumber power (const MyBigNumber & big, unsigned power);
 
 
 

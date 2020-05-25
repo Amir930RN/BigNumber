@@ -52,6 +52,7 @@ MyBigNumber::MyBigNumber ( MyBigNumber && myBig ) noexcept
     myBig.numArray = nullptr;
 }
 
+
 MyBigNumber MyBigNumber::multByOneDigit(const int input) {
 
     MyBigNumber result;
@@ -94,4 +95,85 @@ MyBigNumber MyBigNumber::multByOneDigit(const int input) {
     return result;
     
 }
+
+MyBigNumber operator*(const MyBigNumber &num1, const MyBigNumber &num2) {
+
+    MyBigNumber result;
+
+
+    if ( ( num1.getNumOfDigits()==1 && num1.numArray[0]==0 ) || ( num2.getNumOfDigits()==1 && num2.numArray[0]==0 ) ){
+
+        result.sign = true;
+        result.numOfDigits = 1;
+        result.numArray = new int8_t[1];
+        result.numArray[0]=0;
+        return result;
+    }
+
+    result.sign = (  (num1.sign && num2.sign) || (  !num1.sign && !num2.sign ) );
+
+    MyBigNumber myNum2 = num2;
+
+    unsigned s=0;
+
+    BigNumber r{"0"};
+
+    for (int i = 0; i < num1.numOfDigits ; ++i) {
+
+        r=r+ ( ( (myNum2<<s).multByOneDigit(num1[i]) ) );
+        s++;
+    }
+
+    result.numOfDigits = r.getNumOfDigits();
+    result.numArray = new int8_t[result.numOfDigits];
+    for (int i = 0; i < result.numOfDigits ; ++i) {
+        result.numArray[i] = r.getA(i);
+    }
+
+    return result;
+
+
+}
+
+MyBigNumber MyBigNumber:: operator<<( unsigned shift ){
+
+    MyBigNumber temp;
+
+    if( shift==0 ) {
+        return *this;
+    }
+    else{
+        temp.sign = sign;
+        temp.numOfDigits = numOfDigits + shift;
+        temp.numArray = new int8_t[temp.numOfDigits];
+
+        for (int i = 0; i < shift ; ++i) {
+            temp.numArray[i] = 0;
+        }
+
+        for (int i = (int) shift; i < temp.numOfDigits ; ++i) {
+            temp.numArray[i] = numArray[i-shift];
+        }
+    }
+    return temp;
+}
+
+MyBigNumber MyBigNumber::power(const MyBigNumber &big, unsigned power) {
+
+    MyBigNumber result = big;
+
+    for (int i = 0; i < power -1 ; ++i) {
+
+        const MyBigNumber b = result * big;
+
+        result = b;
+
+    }
+
+    return result;
+
+
+
+}
+
 

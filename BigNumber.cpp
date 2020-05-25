@@ -454,3 +454,10 @@ BigNumber & BigNumber:: operator=( BigNumber && rightNum) noexcept {
 
 }
 
+int8_t &BigNumber::getA(size_t index) {
+    if( index < 0 || index >= numOfDigits){
+        throw out_of_range("The index is out of range.");
+    }
+    return numArray[index];
+}
+
