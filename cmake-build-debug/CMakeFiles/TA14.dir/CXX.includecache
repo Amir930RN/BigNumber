@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-E:/Amir/University/Term 2/AP/BigNumber/BigNumber.cpp
-BigNumber.h
-E:/Amir/University/Term 2/AP/BigNumber/BigNumber.h
-stdexcept
--
-
 E:/Amir/University/Term 2/AP/BigNumber/BigNumber.h
 cstdint
 -
@@ -20,11 +14,15 @@ string
 regex
 -
 
+E:/Amir/University/Term 2/AP/BigNumber/MyBigNumber.h
+BigNumber.h
+E:/Amir/University/Term 2/AP/BigNumber/BigNumber.h
+
 E:/Amir/University/Term 2/AP/BigNumber/main.cpp
 iostream
 -
-cstdint
--
 BigNumber.h
 E:/Amir/University/Term 2/AP/BigNumber/BigNumber.h
+MyBigNumber.h
+E:/Amir/University/Term 2/AP/BigNumber/MyBigNumber.h
 

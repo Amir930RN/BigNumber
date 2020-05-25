@@ -51,3 +51,47 @@ MyBigNumber::MyBigNumber ( MyBigNumber && myBig ) noexcept
     numArray  = myBig.numArray;
     myBig.numArray = nullptr;
 }
+
+MyBigNumber MyBigNumber::multByOneDigit(const int input) {
+
+    MyBigNumber result;
+
+
+    if ( input==0 ) {
+
+        result.sign = true;
+        result.numOfDigits = 1;
+        result.numArray = new int8_t[1];
+        result.numArray[0] = 0;
+        return result;
+
+    }
+
+    result.sign = (input > 0 && sign) || (input < 0 && !sign);
+
+    int myInput = abs(input);
+
+    result.numOfDigits = numOfDigits + 1;
+    result.numArray = new int8_t[result.numOfDigits];
+    size_t i{0};
+    int8_t carry = 0;
+    int8_t s;
+    for (; i < numOfDigits; ++i) {
+        s = myInput * numArray[i] + carry;
+        result[i] = s % 10;
+        carry = s / 10;
+    }
+
+
+    if (carry !=0) {
+        result[i] = carry;
+    }
+    else {
+        //result[i] = 0;
+        result.numOfDigits -= 1;
+    }
+
+    return result;
+    
+}
+

@@ -117,7 +117,7 @@ int8_t & BigNumber::operator[](size_t index){
     return numArray[index];
 }
 
-int BigNumber::operator[](int index) const{
+int BigNumber::operator[](size_t index) const{
     if( index < 0 || index >= numOfDigits){
         throw out_of_range("The index is out of range.");
     }

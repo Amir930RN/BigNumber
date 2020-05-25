@@ -7,7 +7,10 @@ class MyBigNumber : public BigNumber {
 
 private:
 
-    MyBigNumber();
+    MyBigNumber(){};
+
+
+
 
 
 public:
@@ -19,6 +22,12 @@ public:
     MyBigNumber ( const MyBigNumber & myBig );   // copy constructor
     MyBigNumber ( MyBigNumber && myBig ) noexcept;  // move constructor
     MyBigNumber & operator=(MyBigNumber && rightNum) noexcept ;   // move assignment overloading
+
+
+    MyBigNumber multByOneDigit ( const int input );
+
+
+
 
 
 };

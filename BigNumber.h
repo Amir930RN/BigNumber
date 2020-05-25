@@ -46,7 +46,7 @@ public:
     bool getSign() const;
     unsigned int getNumOfDigits() const;
     BigNumber operator-() const;
-    int operator[](int index) const;
+    int operator[](size_t index) const;
     bool operator==( const BigNumber & myBig) const;
     bool operator!=( const BigNumber & myBig) const;
     bool operator>=( const BigNumber & myBig) const;
