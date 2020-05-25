@@ -21,3 +21,33 @@ MyBigNumber &MyBigNumber::operator=(const MyBigNumber myBigNumber) {
     }
     return *this;
 }
+
+MyBigNumber & MyBigNumber:: operator=( MyBigNumber && rightNum) noexcept {
+
+    if( &rightNum != this ){
+        sign = rightNum.sign;
+        numOfDigits = rightNum.numOfDigits;
+        delete [] numArray;
+        numArray = rightNum.numArray;
+        rightNum.numArray = nullptr;
+    }
+    return *this;
+
+}
+
+MyBigNumber::MyBigNumber ( const MyBigNumber & myBig ){
+    sign = myBig.sign;
+    numOfDigits = myBig.numOfDigits;
+    numArray = new int8_t[numOfDigits];
+    for(size_t i{0}; i < numOfDigits; ++i){
+        numArray[i] = myBig.numArray[i];
+    }
+}
+
+MyBigNumber::MyBigNumber ( MyBigNumber && myBig ) noexcept
+{
+    sign = myBig.sign;
+    numOfDigits = myBig.numOfDigits;
+    numArray  = myBig.numArray;
+    myBig.numArray = nullptr;
+}
